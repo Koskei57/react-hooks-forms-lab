@@ -12,8 +12,8 @@ function App() {
     
   }
   
-  function handleFormSubmit(newItem) {
-    setItems([...items, newItem]);
+  function handleFormSubmit(newItems) {
+    setItems([...items, newItems]);
   }
 
   return (

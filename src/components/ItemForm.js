@@ -6,7 +6,7 @@ import { v4 as uuid } from "uuid";
 //     name: itemName,
 //     category: itemCategory,
 //   };
-function ItemForm(onItemFormSubmit) {
+function ItemForm(props) {
   const [name, setName] = useState("");
   const [category, setCategory] = useState("Produce");
   
@@ -18,24 +18,32 @@ function ItemForm(onItemFormSubmit) {
     setCategory( event.target.value);
   }
   
-  function handleSubmit(e) {
-    e.preventDefault();
+  function handleSubmit(event) {
+    event.preventDefault();
     onItemFormSubmit({
       id: uuid(),
-      name, category,
-    });
+      name,
+      category,
+  });
   }
   
   return (
     <form className="NewItem" onSubmit={handleSubmit}>
       <label>
         Name:
-        <input type="text" name="name" onChange={handleNameChange} />
+        <input
+          type="text"
+          name="name"
+          value={name}
+          onChange={handleNameChange} />
       </label>
 
       <label>
         Category:
-        <select name="category" onChange={addElement} >
+        <select
+          name="category"
+          // value={category}
+          onChange={addElement}>
           <option value="Produce">Produce</option>
           <option value="Dairy">Dairy</option>
           <option value="Dessert">Dessert</option>
